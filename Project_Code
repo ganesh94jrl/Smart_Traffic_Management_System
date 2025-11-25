@@ -1,0 +1,306 @@
+int r1=2;
+int y1=3;   // L1
+int g1=4;
+
+int r2=5;
+int y2=6;   //L2
+int g2=7;
+
+int r3=8;
+int y3=9;  //L3
+int g3=10;
+
+int r4=11;
+int y4=12;    //L4
+int g4=13;
+
+int lane1=A0;
+int lane2=A1;   //INPUT EMERGENCY ALL LANES 
+int lane3=A2;
+int lane4=A3;
+
+int lane1state=0;
+int lane2state=0;
+int lane3state=0;
+int lane4state=0;
+
+void setup() {
+  // initialize digital pin LED_BUILTIN as an output.
+  pinMode(r1, OUTPUT);
+  pinMode(g1, OUTPUT);
+  pinMode(r2, OUTPUT);
+  pinMode(g2, OUTPUT);
+  pinMode(r3, OUTPUT);
+  pinMode(g3, OUTPUT);
+  pinMode(r4, OUTPUT);
+  pinMode(g4, OUTPUT);
+   pinMode(y1, OUTPUT);
+    pinMode(y2, OUTPUT);
+     pinMode(y3, OUTPUT);
+      pinMode(y4, OUTPUT);
+
+  pinMode(A0, INPUT_PULLUP);
+  pinMode(A1, INPUT_PULLUP);
+  pinMode(A2, INPUT_PULLUP);
+  pinMode(A3, INPUT_PULLUP);
+}
+
+void loop()
+{
+  lane1state = digitalRead(A0);
+  lane1action();
+  delay(3000);
+
+  if( digitalRead(A0) == 0)
+  {
+    lane1emraction();
+  }
+  delay(200);
+  if( digitalRead(A1) == 0)
+  {
+    lane2emraction();
+  }
+  delay(200);
+  if( digitalRead(A2) == 0)
+  {
+    lane3emraction();
+  }
+  delay(200);
+  if( digitalRead(A3) == 0)
+  {
+    lane4emraction();
+  }
+
+  digitalWrite(y1,1);
+  delay (1000);
+  digitalWrite(y1,0); 
+  
+  lane2action();
+  delay(3000);
+  lane2state = digitalRead(A1);
+  if( digitalRead(A0) == 0)
+  {
+    lane1emraction();
+  }
+  delay(200);
+  if( digitalRead(A1) == 0)
+  {
+    lane2emraction();
+  }
+  delay(200);
+  if( digitalRead(A2) == 0)
+  {
+    lane3emraction();
+  }
+  delay(200);
+  if( digitalRead(A3) == 0)
+  {
+    lane4emraction();
+  }
+
+  digitalWrite(y2,1);
+  delay (1000);
+  digitalWrite(y2,0); 
+  
+  lane3action();
+  delay(3000);
+  lane3state = digitalRead(A2);
+ if( digitalRead(A0) == 0)
+  {
+    lane1emraction();
+  }
+  delay(200);
+  if( digitalRead(A1) == 0)
+  {
+    lane2emraction();
+  }
+  delay(200);
+  if( digitalRead(A2) == 0)
+  {
+    lane3emraction();
+  }
+  delay(200);
+  if( digitalRead(A3) == 0)
+  {
+    lane4emraction();
+  }
+  
+  digitalWrite(y3,1);
+  delay (1000);
+  digitalWrite(y3,0); 
+  
+  lane4action();
+  delay(3000);
+  lane4state = digitalRead(A3);
+  if( digitalRead(A0) == 0)
+  {
+    lane1emraction();
+  }
+  delay(200);
+  if( digitalRead(A1) == 0)
+  {
+    lane2emraction();
+  }
+  delay(200);
+  if( digitalRead(A2) == 0)
+  {
+    lane3emraction();
+  }
+  delay(200);
+  if( digitalRead(A3) == 0)
+  {
+    lane4emraction();
+  }
+
+  digitalWrite(y4,1);
+  delay (1000);
+  digitalWrite(y4,0); 
+  
+}
+
+   // LANE ACTION FUNCTIONS 
+   
+  void lane1action()
+  {
+  digitalWrite(r1,0);
+  digitalWrite(g1,1); 
+
+  digitalWrite(r2,1);
+  digitalWrite(g2,0); 
+
+  digitalWrite(r3,1);
+  digitalWrite(g3,0); 
+
+  digitalWrite(r4,1);
+  digitalWrite(g4,0);
+  
+  
+}
+
+
+void lane2action()
+  {
+  digitalWrite(r1,1);
+  digitalWrite(g1,0); 
+
+  digitalWrite(r2,0);
+  digitalWrite(g2,1); 
+
+  digitalWrite(r3,1);
+  digitalWrite(g3,0); 
+
+  digitalWrite(r4,1);
+  digitalWrite(g4,0); 
+   
+}
+
+
+
+void lane3action()
+  {
+  digitalWrite(r1,1);
+  digitalWrite(g1,0); 
+
+  digitalWrite(r2,1);
+  digitalWrite(g2,0); 
+
+  digitalWrite(r3,0);
+  digitalWrite(g3,1); 
+
+  digitalWrite(r4,1);
+  digitalWrite(g4,0);
+  
+}
+
+
+
+void lane4action()
+  {
+  digitalWrite(r1,1);
+  digitalWrite(g1,0); 
+
+  digitalWrite(r2,1);
+  digitalWrite(g1,0); 
+
+  digitalWrite(r3,1);
+  digitalWrite(g3,0); 
+
+  digitalWrite(r4,0);
+  digitalWrite(g4,1);
+  
+}
+
+
+
+  // EMERGENCY ACTION FUNCTIONS 
+
+
+void lane1emraction()
+  {
+  digitalWrite(r1,0);
+  digitalWrite(g1,1); 
+
+  digitalWrite(r2,1);
+  digitalWrite(g2,0); 
+
+  digitalWrite(r3,1);
+  digitalWrite(g3,0); 
+
+  digitalWrite(r4,1);
+  digitalWrite(g4,0);
+
+   delay(3000);
+}
+
+
+void lane2emraction()
+  {
+  digitalWrite(r1,1);
+  digitalWrite(g1,0); 
+
+  digitalWrite(r2,0);
+  digitalWrite(g2,1); 
+
+  digitalWrite(r3,1);
+  digitalWrite(g3,0); 
+
+  digitalWrite(r4,1);
+  digitalWrite(g4,0); 
+  delay(3000);
+}
+
+
+
+void lane3emraction()
+  {
+  digitalWrite(r1,1);
+  digitalWrite(g1,0); 
+
+  digitalWrite(r2,1);
+  digitalWrite(g2,0); 
+
+  digitalWrite(r3,0);
+  digitalWrite(g3,1); 
+
+  digitalWrite(r4,1);
+  digitalWrite(g4,0);
+  delay(3000); 
+}
+
+
+
+void lane4emraction()
+  {
+  digitalWrite(r1,1);
+  digitalWrite(g1,0); 
+
+  digitalWrite(r2,1);
+  digitalWrite(g1,0); 
+
+  digitalWrite(r3,1);
+  digitalWrite(g3,0); 
+
+  digitalWrite(r4,0);
+  digitalWrite(g4,1);
+  delay(3000); 
+}
